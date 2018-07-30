@@ -175,7 +175,7 @@ module Backup
           out, err = '', ''
           ps = Open4.popen4(command) do |pid, stdin, stdout, stderr|
             stdin.close
-            out, err = stdout.read.strip, stderr.read.strip
+            out, err = stderr.read.strip, stdout.read.strip
           end
         rescue Exception => e
           raise Error.wrap(e, "Failed to execute '#{ name }'")
